@@ -117,6 +117,7 @@ maple-mini: begin clean gccversion build_maple-mini sizeafter finished  copy_map
 maple-rev3: begin clean gccversion build_maple-rev3 sizeafter finished  copy_maple-rev3 end
 maple-rev5: begin clean gccversion build_maple-rev5 sizeafter finished  copy_maple-rev5 end
 generic-none: begin clean gccversion build_generic-none sizeafter finished  copy_generic-none end
+generic-none-16mhz: begin clean gccversion build_generic-none-16mhz sizeafter finished  copy_generic-none-16mhz end
 generic-pc13: begin clean gccversion build_generic-pc13 sizeafter finished  copy_generic-pc13 end
 generic-pg15: begin clean gccversion build_generic-pg15 sizeafter finished  copy_generic-pg15 end
 generic-pd2: begin clean gccversion build_generic-pd2 sizeafter finished  copy_generic-pd2 end
@@ -178,6 +179,8 @@ copy_maple-rev5:
 	cp $(TARGET).bin bootloader_only_binaries/maple_rev5_boot20.bin
 	@echo
 
+
+
 build_generic-none: TARGETFLAGS= -DTARGET_GENERIC_F103_NONE $(DEFINES)
 # Set the linker script
 build_generic-none: LDFLAGS +=-T$(ST_LIB)/c_only_md_high_density.ld
@@ -187,6 +190,18 @@ copy_generic-none:
 	@echo "Copying to binaries folder"
 	@echo
 	cp $(TARGET).bin bootloader_only_binaries/generic-none_bootloader.bin
+	@echo
+
+
+build_generic-none-16mhz: TARGETFLAGS= -DTARGET_GENERIC_F103_NONE_16MHZ $(DEFINES)
+# Set the linker script
+build_generic-none-16mhz: LDFLAGS +=-T$(ST_LIB)/c_only_md_high_density.ld
+build_generic-none-16mhz: elf bin lss sym
+copy_generic-none-16mhz:
+	@echo
+	@echo "Copying to binaries folder--copy_generic-none-16mhz"
+	@echo
+	cp $(TARGET).bin bootloader_only_binaries/generic-none_bootloader-16mhz.bin
 	@echo
 
 

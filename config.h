@@ -179,6 +179,11 @@
 #elif defined TARGET_GENERIC_F103_NONE
 
 
+#elif defined TARGET_GENERIC_F103_NONE_16MHZ
+
+    /* CRISTAL 16MHz */
+    #define XTAL16M     1
+
 #elif defined TARGET_GENERIC_F103_PG15
 
     #define LED_BANK            GPIOG
